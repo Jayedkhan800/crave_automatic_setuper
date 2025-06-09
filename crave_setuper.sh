@@ -21,7 +21,6 @@ error_exit() {
   exit 1
 }
 
-# -------- Banner --------
 echo -e "${BLUE}"
 echo "===================================================="
 echo "       🔧 Crave Setuper - Ubuntu via Termux         "
