@@ -1,4 +1,3 @@
-# crave_setuper
+<h1 align="center" id="title">Crave Automatic Setuper</h1>
 
-'''
-curl -fsSL https://raw.githubusercontent.com/Jayedkhan800/crave_setuper/main/setup.sh | bash '''
+```https://raw.githubusercontent.com/Jayedkhan800/crave_setuper/main/cravesetuper.sh | bash ```
