@@ -4,4 +4,4 @@
 
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Jayedkhan800/crave_setuper/main/crave_setuper.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Jayedkhan800/crave_automatic_setuper/main/crave_automatic_setuper.sh | bash
