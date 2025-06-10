@@ -2,11 +2,13 @@
 
 clear
 
+
 GREEN="\033[1;32m"
 RED="\033[1;31m"
 BLUE="\033[1;34m"
 YELLOW="\033[1;33m"
-NC="\033[0m" # No Color
+NC="\033[0m"
+
 
 print_step() {
   echo -e "${YELLOW}[➤] $1${NC}"
@@ -21,14 +23,15 @@ error_exit() {
   exit 1
 }
 
+
 echo -e "${BLUE}"
 echo "===================================================="
 echo "       🔧 Crave Setuper - Ubuntu via Termux         "
 echo "===================================================="
 echo -e "${NC}"
 
-ARCH=$(uname -m)
 
+ARCH=$(uname -m)
 if [ "$ARCH" = "aarch64" ]; then
     echo -e "${BLUE}[🔍] Detected Architecture: ${GREEN}arm64 (aarch64) — supported ✅${NC}"
 else
@@ -37,17 +40,22 @@ else
     exit 1
 fi
 
+
 print_step "Installing proot-distro..."
 pkg install -y proot-distro > /dev/null 2>&1 || error_exit "Failed to install proot-distro"
 success_msg "proot-distro installed."
+
 
 print_step "Installing Ubuntu container (this may take some time)..."
 proot-distro install ubuntu > /dev/null 2>&1 || error_exit "Failed to install Ubuntu"
 success_msg "Ubuntu container installed."
 
+
 print_step "Setting up Crave inside Ubuntu..."
 
-proot-distro login ubuntu < /dev/null 2>/dev/null << 'EOF'
+
+proot-distro login ubuntu < /dev/null 2>/dev/null << EOF
+
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 RED="\033[1;31m"
@@ -78,11 +86,13 @@ chmod +x crave && mv crave /usr/local/bin > /dev/null 2>&1 || {
 echo -e "\${GREEN}[✔] Crave installed successfully inside Ubuntu.\${NC}"
 EOF
 
+
 echo -e "${GREEN}"
 echo "===================================================="
 echo " ✅ Crave is now installed inside your Ubuntu container!"
 echo " 🔍 To use Crave:"
 echo "     → Run:  proot-distro login ubuntu"
-echo "     → Then: crave --help"
+echo "     → Then: Download crave.conf file"
+echo "     → Then: type crave -n devspace and enter"
 echo "===================================================="
 echo -e "${NC}"
