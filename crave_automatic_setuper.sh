@@ -46,10 +46,18 @@ pkg install -y proot-distro > /dev/null 2>&1 || error_exit "Failed to install pr
 success_msg "proot-distro installed."
 
 
+if proot-distro list | grep -q "ubuntu"; then
+    echo -e "${YELLOW}[⚠] Existing Ubuntu container detected. Removing...${NC}"
+    proot-distro remove ubuntu > /dev/null 2>&1 || {
+        echo -e "${RED}[✖] Failed to remove existing Ubuntu container.${NC}"
+        exit 1
+    }
+    echo -e "${GREEN}[✔] Old Ubuntu container removed.${NC}"
+fi
+
 print_step "Installing Ubuntu container (this may take some time)..."
 proot-distro install ubuntu > /dev/null 2>&1 || error_exit "Failed to install Ubuntu"
 success_msg "Ubuntu container installed."
-
 
 print_step "Setting up Crave inside Ubuntu..."
 
